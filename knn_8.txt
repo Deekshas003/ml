@@ -1,0 +1,20 @@
+knn
+import pandas as pd
+import numpy as np
+
+data=pd.read_csv(r"C:\Users\deeks\OneDrive\Desktop\Social_Network_Ads (1).csv")
+data
+x=data[["Age","EstimatedSalary"]].values
+y=data["Purchased"].values
+
+#define knn
+def knn_predict(x,y,new_data,k):
+	distances=np.sqrt(np.sum((x-new_data), axis=1))
+	neighbours=y[np.argsort(distances)[:k]]
+	return np.bincount(neighbours).argmax()
+
+#test knn
+new_data=[85,999450]
+k=5
+prediction=knn_predict(x,y,new_data,k)
+print("prediction","purchased" if prediction else "not purchased")
