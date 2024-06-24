@@ -1,0 +1,39 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+weeks=["sun","mon","tue","wed","thur","fri","sat"]
+counts=[1234,2345,5678,8903,642,4567,8734]
+
+#scatterplot
+plt.scatter(weeks,counts, c="red")
+plt.xlabel(weeks)
+plt.ylabel(counts)
+plt.title("step_count")
+plt.show()
+
+#bar
+plt.bar(weeks,counts, color="green",width=0.2)
+plt.xlabel(weeks)
+plt.ylabel(counts)
+plt.title("step_count")
+plt.show()
+
+
+#line
+plt.plot(weeks,counts)
+plt.xlabel(weeks)
+plt.ylabel(counts)
+plt.title("step_count")
+plt.show()
+
+#pie
+data=pd.DataFrame ({
+	'weeks':["sun","mon","tue","wed","thur","fri","sat"],
+	'counts':[1234,2345,5678,8903,642,4567,8734]
+})
+plt.pie(data['counts'],labels=data['weeks'])
+plt.title("step_count")
+plt.show()
+

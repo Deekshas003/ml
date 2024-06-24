@@ -1,0 +1,18 @@
+import pandas as pd
+
+data=pd.read_csv(r"C:\Users\deeks\OneDrive\Desktop\Sales.csv")
+data
+
+
+#tkinter
+import tkinter as tk
+from tkinter.filedialog import askopenfilename
+
+tk.Tk().withdraw()
+filename=askopenfilename()
+print(filename)
+
+#will give you a prompt in your desktop, check and select a csv or excel file, #that will be opened
+#you will get a error in data1, so copy and paste the file name in data1, then run 
+data1=pd.read_csv(r"C:/Users/deeks/OneDrive/Desktop/Social_Network_Ads (1).csv")
+data1

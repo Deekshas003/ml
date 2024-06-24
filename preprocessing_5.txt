@@ -1,0 +1,25 @@
+import pandas as pd
+import numpy as np
+
+data=pd.read_csv(r"C:\Users\deeks\OneDrive\Desktop\DATA2 (1).csv")
+data=pd.DataFrame(data)
+data
+
+
+#missing_value
+data.isnull().sum() #whole_data
+data[data.isnull().any(axis=1)] #row
+
+#handling
+avg_age=data['Age'].mean()
+data['Age']=data['Age'].fillna(avg_age)
+
+avg_marks=data['Marks'].mean()
+data['Marks']=data['Marks'].fillna(avg_age)
+
+
+print("before",data.shape)
+data.dropna(inplace=True)
+print("after",data.shape)
+
+

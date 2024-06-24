@@ -1,0 +1,46 @@
+import statistics as st
+import pandas as pd
+import numpy as np
+from scipy import stats
+
+#statistics
+data=[1,2,3,4,5,6,7,8,4,7,2,8]
+mean=st.mean(data)
+mode=st.mode(data)
+median=st.median(data)
+stdev=st.stdev(data)
+print('mean',mean)
+print('mode',mode)
+print('median',median)
+print('stdev',stdev)
+
+
+#numpy
+data=[1,2,3,4,5,6,7,8,4,7,2,8]
+mean=np.mean(data)
+median=np.median(data)
+stdev=np.std(data)
+max=np.max(data)
+min=np.min(data)
+print('mean',mean)
+print('median',median)
+print('stdev',stdev)
+print('max',max)
+print('min',min)
+mode = st.mode(data)
+print('mode',mode)
+
+data=[1,2,3,4,5,6,7,8,4,7,2,8]
+data1=pd.DataFrame(data)
+mean=pd.DataFrame(data1).mean()
+mode=pd.Series(data).mode()
+median=pd.Series(data).median()
+stdev=pd.Series(data).std()
+min=pd.Series(data).min()
+max=pd.Series(data).max()
+print('mean',mean)
+print('median',median)
+print('stdev',stdev)
+print('max',max)
+print('min',min)
+print('mode',mode)
