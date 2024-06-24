@@ -1,0 +1,43 @@
+kmeans
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+data=pd.read_csv(r"C:\Users\deeks\OneDrive\Desktop\Mall_Customers_clustering (3).csv")
+data
+
+data1=data.drop(columns("CustomerID","Age","Gender"))
+data1
+
+plt.scatter(data1["Annual Income (k$)"],data1["Spending Score (1-100)"]
+plt.show()
+
+
+from sklearn.cluster import KMeans
+wcss=[]
+for i in range(1,21):  
+    km=KMeans(n_cluster=i)
+    km.fit_predict(data1)
+    wcss.append(km.inertia_)
+
+
+wcss
+plt.plot(range(1,21),wcss)
+
+
+X=data1.iloc[:,:].values
+km=Kmeans(n_cluster=5)
+y_value=km.fit_predict(X)
+y_values
+X[y_value==3,0]
+
+plt.scatter(X[y_values==0,0], X[y_values==0,1], color="red" ,labels="carefull")
+plt.scatter(X[y_values==1,0], X[y_values==1,1], color="blue" ,labels="standard")
+plt.scatter(X[y_values==2,0], X[y_values==2,1], color="yellow" ,labels="target")
+plt.scatter(X[y_values==3,0], X[y_values==3,1], color="green" ,labels="sensible")
+plt.scatter(X[y_values==4,0], X[y_values==4,1], color="purple" ,labels="careless")
+
+
+
+    
