@@ -1,0 +1,26 @@
+#naive bayes
+from sklearn import datasets
+wine=datasets.load_wine()
+
+print("features", wine.feature_names)
+print("target", wine.target_names)
+
+
+print(wine.data.shape)
+
+print(wine.data[0:5])
+print(wine.target)
+
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(wine.data,wine.target, train_size=0.2, random_state=109)
+
+from sklearn.naive_bayes import GaussianNB
+gnb=GaussianNB()
+
+gnb.fit(x_train, y_train)
+y_pred=gnb.predict(x_test)
+
+from sklearn.metrics import confusion_matrix
+cm=confusion_matrix(y_test,y_pred)
+cm
