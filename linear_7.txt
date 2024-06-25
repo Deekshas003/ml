@@ -1,0 +1,62 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn import metrics
+
+
+data=pd.read_csv(r"C:\Users\deeks\OneDrive\Desktop\adverstment.csv")
+data.head(5)
+
+#preprocessing
+#shape
+data.shape
+data.isnull().sum()
+data.duplicated().any()
+
+#outlinears
+fig,axs=plt.subplots(3,figsize=(5,5))
+p1=sns.boxplot(data['TV'],ax=axs[0])
+p2=sns.boxplot(data['Radio'],ax=axs[1])
+p3=sns.boxplot(data['Newspaper'],ax=axs[1])
+plt.tight_layout()
+plt.show()
+
+#eda
+sns.distplot(data['Sales'])
+plt.show()
+
+#pairplot
+sns.pairplot(data,x_vars=['TV','Radio','Newspaper'],y_vars='SALES', height=4, aspect=1, kind='scatter')
+plt.show()
+
+#heatmap
+sns.heatmap(data.corr(),annot=True)
+plt.show()
+
+x=data[['WEEK']]
+y=data['SALES']
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2, random_state=50)
+slr=LinearRegression()
+slr.fit(x_train,y_train)
+
+
+print("intercept",slr.intercept_)
+print("coef",slr.coef_)
+print('reg:0.058+6.56*TV')
+
+#bestfitline
+plt.scatter(x_train,y_train)
+plt.plot(x_train, 0.058+6.56*x_train,'r')
+plt.show()
+
+#prediction
+y_pred=slr.predict(x_test)
+x_pred=slr.predict(x_train)
+print(y_pred)
+print(y_test)
+
+#sample
+slr.predict([[100]])
